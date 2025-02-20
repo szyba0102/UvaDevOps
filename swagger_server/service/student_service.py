@@ -1,9 +1,11 @@
 import os
 import tempfile
+import uuid
 from functools import reduce
 
 from bson import ObjectId
 from pymongo import MongoClient
+from bson.binary import Binary, UUID_SUBTYPE
 
 # db_dir_path = tempfile.gettempdir()
 # db_file_path = os.path.join(db_dir_path, "students.json")
@@ -30,22 +32,24 @@ def add(student=None):
     if found_student:
         return 'already exists', 409
 
-    result = students_collection.insert_one(student.to_dict())
-
+    student_uuid = str(uuid.uuid4())
+    student_dict = student.to_dict()
+    student_dict["_id"] = student_uuid
+    result = students_collection.insert_one(student_dict)
     return str(result.inserted_id)
 
 
 def get_by_id(student_id=None, subject=None):
-    student = students_collection.find_one({"_id": ObjectId(student_id)})
+    student = students_collection.find_one({"_id": student_id})
     if not student:
         return 'not found', 404
-    student['student_id'] = str(student["_id"])
+    student['student_id'] = student["_id"]
     del student["_id"]
     return student
 
 
 def delete(student_id=None):
-    result = students_collection.delete_one({"_id": ObjectId(student_id)})
+    result = students_collection.delete_one({"_id": student_id})
     if result.deleted_count == 0:
         return 'not found', 404
 
