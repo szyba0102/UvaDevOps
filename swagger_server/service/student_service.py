@@ -18,6 +18,7 @@ db = client[DB_NAME]
 students_collection = db["students"]
 
 def add(student=None):
+    print("AAAAA")
     # queries = []
     # query = Query()
     # queries.append(query.first_name == student.first_name)

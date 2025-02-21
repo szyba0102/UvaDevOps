@@ -74,6 +74,7 @@ class Student(Model):
         :param student_id: The student_id of this Student.
         :type student_id: int
         """
+
         self._student_id = student_id
 
     @property
