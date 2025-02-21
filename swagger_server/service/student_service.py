@@ -1,7 +1,6 @@
 import os
 import tempfile
 import uuid
-from functools import reduce
 
 from bson import ObjectId
 from pymongo import MongoClient
