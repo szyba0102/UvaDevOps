@@ -1,12 +1,14 @@
 version: '3'
 services:
   student_service:
-    image: UvADevOps/student_service
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: unless-stopped
     depends_on:
       - mongo
     environment:
-      MONGO_URI: mongodb://mongo:27017
+      - MONGO_URI=mongodb://mongo:27017
     ports:
       - "8080:8080"
 
