@@ -1,7 +1,7 @@
 name: Build Test and push
 on: [push]
 env:
-  IMAGE_NAME: UvaDevOps/student_service
+  IMAGE_NAME: flask-server
   REPO_NAME: szyba0102
 
 
