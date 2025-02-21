@@ -4,7 +4,6 @@ env:
   IMAGE_NAME: flask-server
   REPO_NAME: szyba0102
 
-
 jobs:
   build:
     runs-on: ubuntu-latest

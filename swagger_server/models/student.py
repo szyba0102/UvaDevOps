@@ -74,9 +74,6 @@ class Student(Model):
         :param student_id: The student_id of this Student.
         :type student_id: int
         """
-        if student_id is None:
-            raise ValueError("Invalid value for `student_id`, must not be `None`")  # noqa: E501
-
         self._student_id = student_id
 
     @property
