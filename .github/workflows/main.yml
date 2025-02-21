@@ -1,8 +1,8 @@
 name: Build Test and push
 on: [push]
 env:
-  IMAGE_NAME: student_service
-  REPO_NAME:
+  IMAGE_NAME: UvaDevOps/student_service
+  REPO_NAME: szyba0102
 
 
 jobs:
