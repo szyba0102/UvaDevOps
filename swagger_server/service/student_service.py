@@ -1,14 +1,6 @@
 import os
-import tempfile
 import uuid
-
-from bson import ObjectId
 from pymongo import MongoClient
-from bson.binary import Binary, UUID_SUBTYPE
-
-# db_dir_path = tempfile.gettempdir()
-# db_file_path = os.path.join(db_dir_path, "students.json")
-# student_db = TinyDB(db_file_path)
 
 MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017")
 DB_NAME = os.getenv("DB_NAME", "student_db")
@@ -18,13 +10,6 @@ db = client[DB_NAME]
 students_collection = db["students"]
 
 def add(student=None):
-    print("AAAAA")
-    # queries = []
-    # query = Query()
-    # queries.append(query.first_name == student.first_name)
-    # queries.append(query.last_name == student.last_name)
-    # query = reduce(lambda a, b: a & b, queries)
-    # res = student_db.search(query)
     found_student = students_collection.find_one({
         "first_name": student.first_name,
         "last_name": student.last_name
